@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VILLA OASIS REUS</title>
+    <title>VILLA OASIS REUS | 19 Pax</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,98 +11,130 @@
         :root { --primary: #1a2a1d; --accent: #c5a880; --bg: #fdfaf5; }
         body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: #333; padding-bottom: 90px; }
         
-        .app-bar { position: sticky; top: 0; background: white; padding: 15px; text-align: center; z-index: 1000; border-bottom: 1px solid #eee; }
-        .app-bar h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.2rem; color: var(--primary); letter-spacing: 2px; }
+        /* Barra Superior */
+        .app-bar { position: sticky; top: 0; background: white; padding: 15px; text-align: center; z-index: 1000; border-bottom: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .app-bar h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.2rem; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; }
 
-        .container { padding: 15px; max-width: 800px; margin: 0 auto; } /* Centrado para PC */
+        .container { padding: 15px; max-width: 900px; margin: 0 auto; }
 
-        .info-card { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .badge { background: var(--accent); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
-        .villa-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 5px 0; color: var(--primary); }
+        /* Tarjeta de Información Principal */
+        .info-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #f0f0f0; }
+        .badge { background: var(--accent); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; display: inline-block; text-transform: uppercase; }
+        .villa-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 5px 0; color: var(--primary); }
+        .description { color: #666; font-size: 1rem; line-height: 1.6; margin-bottom: 20px; }
 
-        /* Galería Mejorada para PC y Móvil */
-        .section-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 25px 0 15px; border-left: 4px solid var(--accent); padding-left: 12px; }
+        /* Galería Estilo Mosaico Adaptable */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 30px 0 15px; border-left: 5px solid var(--accent); padding-left: 15px; color: var(--primary); }
         
         .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .photo-grid img, .photo-grid video { 
             width: 100%; 
-            height: 200px; 
-            object-fit: cover; /* Evita que se achaten */
-            border-radius: 12px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
-            background: #eee; 
+            height: 220px; 
+            object-fit: cover; /* Mantiene la proporción sin achatar */
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+            background: #eee;
+            transition: transform 0.3s ease;
         }
 
-        /* Ajustes para pantallas grandes (PC) */
+        /* Diseño para PC (Tablets y Escritorio) */
         @media (min-width: 768px) {
-            .photo-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            .photo-grid img:nth-child(5n+1), .video-item { grid-column: span 2; height: 400px; }
+            .photo-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+            .photo-grid img, .photo-grid video { height: 280px; }
+            /* Hacemos que algunas fotos destaquen más en PC */
+            .photo-grid img:nth-child(6n+1), .video-item { grid-column: span 2; height: 450px; }
         }
 
-        .map-box { border-radius: 20px; overflow: hidden; margin-top: 15px; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .map-box iframe { width: 100%; height: 450px; border: none; display: block; }
+        /* Mapa Sin Errores de Conexión */
+        .map-box { border-radius: 25px; overflow: hidden; margin-top: 15px; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .map-box iframe { width: 100%; border: none; display: block; }
 
-        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 75px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 1000; padding-bottom: 10px; }
-        .nav-item { text-decoration: none; color: #bbb; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.7rem; font-weight: 600; }
+        /* Navegación Inferior Estilo App */
+        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 80px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 2000; padding-bottom: 10px; }
+        .nav-item { text-decoration: none; color: #aaa; display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 600; transition: 0.3s; }
         .nav-item.active { color: var(--primary); }
-        .nav-item i { font-size: 1.3rem; }
+        .nav-item i { font-size: 1.5rem; }
 
-        .btn-whatsapp { background: #25d366; color: white; padding: 18px; border-radius: 15px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; margin: 20px 0; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
+        /* Botón de Reserva WhatsApp */
+        .btn-whatsapp { background: #25d366; color: white; padding: 20px; border-radius: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; margin: 25px 0; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); font-size: 1.1rem; }
+        .btn-whatsapp:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
 
-    <div class="app-bar"><h1>VILLA OASIS</h1></div>
+    <div class="app-bar">
+        <h1>VILLA OASIS</h1>
+    </div>
 
     <div class="container">
         <div class="info-card">
-            <span class="badge">CAPACIDAD 19 PAX</span>
-            <h2 class="villa-title">Villa Exclusiva Reus</h2>
-            <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">7 Dormitorios, Piscina privada y zona BBQ. El lugar ideal para grupos grandes.</p>
+            <span class="badge">Capacidad: 19 Personas</span>
+            <h2 class="villa-title">Villa de Lujo en Reus</h2>
+            <p class="description">
+                Espectacular propiedad con 7 dormitorios, piscina privada y zona de barbacoa. 
+                El refugio perfecto para grupos grandes y familias a un paso de PortAventura.
+            </p>
             
-            <a href="https://wa.me/34617635544?text=Hola,%20quiero%20reservar%20Villa%20OASIS" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> RESERVAR AHORA
+            <a href="https://wa.me/34617635544?text=Hola,%20me%20gustaría%20consultar%20disponibilidad%20para%20Villa%20Oasis" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> RESERVAR POR WHATSAPP
             </a>
         </div>
 
-        <h3 class="section-title">Galería de Fotos</h3>
-        <div class="photo-grid" id="gallery">
+        <h3 class="section-title">Galería (25 Fotos)</h3>
+        <div class="photo-grid" id="main-gallery">
             <video src="video.mp4" controls class="video-item" poster="1.jpg"></video>
             
             <script>
-                const gallery = document.getElementById('gallery');
+                const galleryDiv = document.getElementById('main-gallery');
                 for (let i = 1; i <= 25; i++) {
                     const img = document.createElement('img');
                     
-                    // Si el número de foto es del 16 al 23, busca .png
-                    // De lo contrario, busca .jpg
+                    // Lógica de extensiones: 16-23 son .png, el resto .jpg
                     if (i >= 16 && i <= 23) {
                         img.src = `${i}.png`;
                     } else {
                         img.src = `${i}.jpg`;
                     }
                     
-                    img.alt = `Villa Oasis Foto ${i}`;
+                    img.alt = `Villa Oasis Reus - Foto ${i}`;
                     img.loading = "lazy";
-                    gallery.appendChild(img);
+                    galleryDiv.appendChild(img);
                 }
             </script>
         </div>
 
-        <h3 class="section-title" id="mapa">Ubicación Exacta</h3>
-        <p style="font-size: 0.85rem; color: #777; margin-bottom: 15px;">
-            <i class="fas fa-map-marker-alt"></i> Camí del Mas de Colomí, 9E, 43203 Reus
+        <h3 class="section-title" id="ubicacion">Ubicación Exacta</h3>
+        <p style="font-size: 0.9rem; color: #777; margin-bottom: 15px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> 
+            Camí del Mas de Colomí, 9E, 43203 Reus, Tarragona
         </p>
+        
         <div class="map-box">
-            <iframe src="https://maps.google.com/?cid=16098823267541548198&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ9" allowfullscreen="" loading="lazy"></iframe>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.475475653556!2d1.1118471766524967!3d41.15689711025556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a14e9631742767%3A0xe5346397399a7445!2zQ2Ftw60gZGVsIE1hcyBkZSBDb2xvbWksIDksIDQzMjA0IFJldXMsIFRhcnJhZ29uYQ!5e0!3m2!1ses!2ses!4v1712586000000!5m2!1ses!2ses" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
 
     <nav class="nav-bar">
-        <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Inicio</span></a>
-        <a href="#mapa" class="nav-item"><i class="fas fa-map-pin"></i><span>Mapa</span></a>
-        <a href="https://wa.me/34617635544" class="nav-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
-        <a href="tel:+34617635544" class="nav-item"><i class="fas fa-phone"></i><span>Llamar</span></a>
+        <a href="#" class="nav-item active">
+            <i class="fas fa-home"></i><span>Inicio</span>
+        </a>
+        <a href="#ubicacion" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i><span>Mapa</span>
+        </a>
+        <a href="https://wa.me/34617635544" class="nav-item">
+            <i class="fab fa-whatsapp"></i><span>Chat</span>
+        </a>
+        <a href="tel:+34617635544" class="nav-item">
+            <i class="fas fa-phone"></i><span>Llamar</span>
+        </a>
     </nav>
 
 </body>
