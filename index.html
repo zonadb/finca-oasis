@@ -14,30 +14,36 @@
         .app-bar img { height: 60px; width: auto; }
 
         .container { padding: 15px; max-width: 900px; margin: 0 auto; }
-        
         .info-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .badge { background: var(--accent); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px; }
-        
         .section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 30px 0 15px; border-left: 5px solid var(--accent); padding-left: 15px; color: var(--primary); }
         .text-block { line-height: 1.6; color: #555; font-size: 0.95rem; }
-        .highlight-box { background: #fff4e6; border: 1px solid #ffd8a8; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.9rem; }
+
+        /* Galería */
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .photo-grid img, .photo-grid video { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; background: #eee; cursor: pointer; transition: 0.3s; }
+        .photo-grid img:hover { opacity: 0.8; }
+        @media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        /* Estilos del Ampliador (Modal) */
+        #modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        #modal img, #modal video { max-width: 90%; max-height: 80%; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        #modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; font-weight: bold; }
 
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
         .service-item { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 8px; }
-
-        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .photo-grid img, .photo-grid video { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; background: #eee; }
-        @media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
-
-        .btn-whatsapp { background: #25d366; color: white; padding: 18px; border-radius: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; margin: 20px 0; transition: 0.3s; }
-        .btn-whatsapp:hover { background: #1ebe57; transform: scale(1.02); }
+        .btn-whatsapp { background: #25d366; color: white; padding: 18px; border-radius: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; margin: 20px 0; }
 
         .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 75px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 2000; }
         .nav-item { text-decoration: none; color: #aaa; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; font-weight: 600; }
-        .nav-item i { font-size: 1.5rem; margin-bottom: 4px; }
     </style>
 </head>
 <body>
+
+    <div id="modal" onclick="this.style.display='none'">
+        <span id="modal-close">&times;</span>
+        <div id="modal-content"></div>
+    </div>
 
     <div class="app-bar">
         <img src="LOGO NUEVO  OASIS TARRAGONA  2025 .png" alt="FINCA OASIS TARRAGONA">
@@ -48,18 +54,17 @@
             <span class="badge">Capacidad: hasta 19 personas</span>
             <h2 style="font-family:'Playfair Display'; margin:0;">Espectacular Finca en Reus</h2>
             <div class="text-block">
-                <p>Ideal para disfrutar de la tranquilidad, muy cerca de Tarragona, Reus y PortAventura. El acceso es muy sencillo con camino asfaltado y la finca está totalmente iluminada.</p>
+                <p>Ideal para disfrutar de la tranquilidad, muy cerca de Tarragona, Reus y PortAventura. Acceso sencillo asfaltado y finca totalmente iluminada.</p>
             </div>
             <a href="https://wa.me/34617635544" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> CONSULTAR DISPONIBILIDAD</a>
         </div>
 
         <h3 class="section-title">Distribución y Espacios</h3>
         <div class="text-block">
-            <p>La propiedad consta de 5 dormitorios, 9 camas y 2 baños completos. Además, disponemos de 2 salones y amplias zonas de descanso con sofás cama.</p>
             <ul style="padding-left: 20px;">
-                <li><strong>Dormitorios:</strong> 5 habitaciones preparadas para el confort.</li>
+                <li><strong>Dormitorios:</strong> 5 habitaciones preparadas para su confort.</li>
                 <li><strong>Camas:</strong> 9 camas distribuidas por la casa.</li>
-                <li><strong>Exteriores:</strong> Campo de fútbol, piscina y jardín de uso exclusivo.</li>
+                <li><strong>Exteriores:</strong> Campo de fútbol, piscina y jardín exclusivo.</li>
             </ul>
         </div>
 
@@ -75,33 +80,41 @@
 
         <h3 class="section-title">Galería (56 Fotos)</h3>
         <div class="photo-grid" id="main-gallery">
-            <video src="video.mp4" controls class="video-item" poster="1.jpg"></video>
+            <video src="video.mp4" controls class="video-item" poster="1.jpg" onclick="event.stopPropagation(); expand(this)"></video>
             <script>
                 const g = document.getElementById('main-gallery');
                 for (let i = 1; i <= 56; i++) {
                     const img = document.createElement('img');
-                    if (i >= 16 && i <= 23) { img.src = i + '.png'; }
-                    else { img.src = i + '.jpg'; }
+                    img.src = (i >= 16 && i <= 23) ? i + '.png' : i + '.jpg';
+                    img.onclick = function() { expand(this); };
                     img.loading = "lazy";
                     g.appendChild(img);
+                }
+
+                function expand(el) {
+                    const modal = document.getElementById('modal');
+                    const content = document.getElementById('modal-content');
+                    modal.style.display = "flex";
+                    content.innerHTML = el.outerHTML;
+                    // Quitamos el onclick del clon para que no haga bucle
+                    content.firstChild.onclick = null;
                 }
             </script>
         </div>
 
         <h3 class="section-title">Normas y Condiciones</h3>
         <div class="text-block" style="font-size: 0.85rem;">
-            <p>🚫 <strong>Música:</strong> Prohibido usar equipos de música en el exterior por respeto a los vecinos. En el interior no hay impedimento.</p>
+            <p>🚫 <strong>Música:</strong> Prohibido usar equipos en el exterior a partir de las 22y siempre volumen moderado. En el interior está permitido.</p>
             <p>🐾 <strong>Mascotas:</strong> Se aceptan siempre que permanezcan fuera de las casas.</p>
-            <p>🧼 <strong>Limpieza:</strong> La finca debe entregarse limpia y en el mismo estado que se recibió. Gastos de limpieza: 80€.</p>
-            <p>💰 <strong>Fianza:</strong> Se requiere una fianza de 300€.</p>
-            <p>🧼 <strong>Sábanas/Toallas:</strong> Incluidas desde 6 noches. Para menos noche, traer propias o suplemento de 9€/cama.</p>
+            <p>🧼 <strong>Limpieza:</strong> Finca debe entregarse limpia. Gastos limpieza: 90€.</p>
+            <p>💰 <strong>Fianza:</strong> Se requiere fianza de 300€.</p>
+            <p>🧼 <strong>Sábanas:</strong> Incluidas desde 6 noches. menos noches: traer propias o 5€/cama.</p>
         </div>
 
-        <h3 class="section-title" id="ubicacion">Ubicación</h3>
-        <p class="text-block">Camí Mas del Colomí, 9E, Reus. Hay una gasolinera muy cerca para compras de última hora.</p>
+        <h3 class="section-title" id="ubicacion">Ubicación Exacta</h3>
         <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4172819897!2d1.1247072!3d41.1363617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a15104e792c3a5%3A0x6a05e0e09d940656!2sCam%C3%AD%20del%20Mas%20del%20Colom%C3%AD%2C%209E%2C%2043206%20Reus%2C%20Tarragona!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" 
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.444!2d1.1!3d41.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDA2JzAwLjAiTiAxwrAwNicwMC4wIkU!5e0!3m2!1ses!2ses!4v123456789" 
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
