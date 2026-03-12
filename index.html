@@ -9,55 +9,70 @@
     <style>
         :root { --primary: #1a2a1d; --accent: #c5a880; --bg: #fdfaf5; }
         body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: #333; padding-bottom: 90px; }
-        .app-bar { position: sticky; top: 0; background: white; padding: 15px; text-align: center; z-index: 1000; border-bottom: 1px solid #eee; }
-        .app-bar h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.2rem; color: var(--primary); letter-spacing: 2px; }
+        
+        /* Cabecera con Logo */
+        .app-bar { position: sticky; top: 0; background: white; padding: 10px; text-align: center; z-index: 1000; border-bottom: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .app-bar img { height: 60px; width: auto; }
+
         .container { padding: 15px; max-width: 900px; margin: 0 auto; }
         
-        /* Tarjeta Principal */
         .info-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .badge { background: var(--accent); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px; }
         
-        /* Secciones de Texto */
         .section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 30px 0 15px; border-left: 5px solid var(--accent); padding-left: 15px; color: var(--primary); }
         .text-block { line-height: 1.6; color: #555; font-size: 0.95rem; }
         .highlight-box { background: #fff4e6; border: 1px solid #ffd8a8; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.9rem; }
 
-        /* Galería */
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
+        .service-item { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 8px; }
+
         .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .photo-grid img, .photo-grid video { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; background: #eee; }
         @media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        .btn-whatsapp { background: #25d366; color: white; padding: 18px; border-radius: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; margin: 20px 0; }
+        .btn-whatsapp { background: #25d366; color: white; padding: 18px; border-radius: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; font-weight: 700; margin: 20px 0; transition: 0.3s; }
+        .btn-whatsapp:hover { background: #1ebe57; transform: scale(1.02); }
+
         .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 75px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 2000; }
         .nav-item { text-decoration: none; color: #aaa; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; font-weight: 600; }
+        .nav-item i { font-size: 1.5rem; margin-bottom: 4px; }
     </style>
 </head>
 <body>
 
-    <div class="app-bar"><h1>FINCA OASIS</h1></div>
+    <div class="app-bar">
+        <img src="LOGO NUEVO  OASIS TARRAGONA  2025 .png" alt="FINCA OASIS TARRAGONA">
+    </div>
 
     <div class="container">
         <div class="info-card">
-            <span class="badge">Capacidad: hasta 17 personas</span>
-            <h2 style="font-family:'Playfair Display'; margin:0;">Espectacular Finca en Reus</h2>
+            <span class="badge">Capacidad: hasta 17 personas</span> [cite: 47, 161]
+            <h2 style="font-family:'Playfair Display'; margin:0;">Espectacular Finca en Reus</h2> [cite: 43, 157]
             <div class="text-block">
-                <p>Ideal para disfrutar de la naturaleza cerca de PortAventura, Tarragona y Reus[cite: 37, 43]. El acceso es sencillo por camino asfaltado y la finca está totalmente iluminada[cite: 38].</p>
+                <p>Ideal para disfrutar de la tranquilidad, muy cerca de Tarragona, Reus y PortAventura. [cite: 37, 152] El acceso es muy sencillo con camino asfaltado y la finca está totalmente iluminada. [cite: 38, 153]</p>
             </div>
             <a href="https://wa.me/34617635544" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> CONSULTAR DISPONIBILIDAD</a>
         </div>
 
-        <h3 class="section-title">Servicios y Equipamiento</h3>
+        <h3 class="section-title">Distribución y Espacios</h3> [cite: 1, 42]
         <div class="text-block">
+            <p>La propiedad consta de 5 dormitorios, 9 camas y 2 baños completos. [cite: 2, 3, 4] Además, disponemos de 2 salones y sofás cama adicionales. [cite: 43, 44]</p>
             <ul style="padding-left: 20px;">
-                <li>Piscina espectacular y zona infantil[cite: 40].</li>
-                <li>Baño con gran bañera[cite: 40, 46].</li>
-                <li>Aire acondicionado y Calefacción[cite: 10, 11].</li>
-                <li>Zona de 4 barbacoas y Parking privado.</li>
-                <li>Campo de fútbol y Sala de juegos [cite: 44].</li>
+                <li><strong>Dormitorio 1:</strong> 1 cama individual y 1 litera. [cite: 168, 169]</li>
+                <li><strong>Dormitorio 2:</strong> 1 cama de matrimonio. [cite: 170, 171]</li>
+                <li><strong>Sala de Juegos:</strong> traer juegos. [cite: 44, 45]</li>
+                <li><strong>Exteriores:</strong> Campo de fútbol, piscina y jardín de uso exclusivo. [cite: 6, 29, 44]</li>
             </ul>
-            <div class="highlight-box">
-                <strong>Nota Sala de Juegos:</strong> Acceso permitido solo en alquileres de 2 noches o más.
-            </div>
+        </div>
+
+        <h3 class="section-title">Servicios</h3> [cite: 7, 51, 172]
+        <div class="services-grid">
+            <div class="service-item"><i class="fas fa-wifi"></i> Wifi [cite: 19, 173]</div>
+            <div class="service-item"><i class="fas fa-wind"></i> Aire Acondicionado [cite: 10, 176]</div>
+            <div class="service-item"><i class="fas fa-fire-alt"></i> 2 Barbacoas [cite: 47, 161]</div>
+            <div class="service-item"><i class="fas fa-parking"></i> Parking privado [cite: 28, 174]</div>
+            <div class="service-item"><i class="fas fa-tv"></i> TV y Chimenea [cite: 16, 17]</div>
+            <div class="service-item"><i class="fas fa-utensils"></i> Cocina completa [cite: 9, 175]</div>
         </div>
 
         <h3 class="section-title">Galería (56 Fotos)</h3>
@@ -65,9 +80,9 @@
             <video src="video.mp4" controls class="video-item" poster="1.jpg"></video>
             <script>
                 const g = document.getElementById('main-gallery');
-                for (let i = 1; i <= 50; i++) {
+                // Bucle actualizado a 56 fotos
+                for (let i = 1; i <= 56; i++) {
                     const img = document.createElement('img');
-                    // Mantenemos la lógica de tus archivos actuales
                     if (i >= 16 && i <= 23) { img.src = i + '.png'; }
                     else { img.src = i + '.jpg'; }
                     img.loading = "lazy";
@@ -76,27 +91,29 @@
             </script>
         </div>
 
-        <h3 class="section-title">Normas de la Casa</h3>
+        <h3 class="section-title">Normas y Condiciones</h3> [cite: 65]
         <div class="text-block" style="font-size: 0.85rem;">
-            <p>🚫 <strong>Música:</strong> Prohibido usar equipos de música en el exterior por respeto a los vecinos. En el interior no hay impedimento[cite: 49, 50].</p>
-            <p>🐾 <strong>Mascotas:</strong> Se aceptan siempre que permanezcan fuera de las casas[cite: 49, 68].</p>
-            <p>🧼 <strong>Sábanas:</strong> Incluidas en reservas de +6 noches. Para menos noches, traer sábanas/saco o suplemento de 5€/cama[cite: 52].</p>
+            <p>🚫 <strong>Música:</strong> Prohibido usar equipos de música en el exterior (sonido molesta a vecinos). [cite: 49, 163]</p>
+            <p>🐾 <strong>Mascotas:</strong> Se aceptan únicamente en el exterior de las casas. [cite: 49, 68]</p>
+            <p>🧼 <strong>Limpieza:</strong> La finca debe entregarse en el mismo estado de limpieza que se recibió. [cite: 66] Gastos de limpieza: 40€. [cite: 90]</p>
+            <p>💰 <strong>Fianza:</strong> Se requiere una fianza de 300€. [cite: 91, 92]</p>
+            <p>🧼 <strong>Sábanas/Toallas:</strong> Incluidas desde 6 noches. Para menos noches, traer propias o suplemento de 7€/cama. [cite: 52, 164]</p>
         </div>
 
-        <h3 class="section-title">Ubicación</h3>
-        <p class="text-block">Camí Mas del Colomí, 9E, Reus[cite: 139, 143]. Tenemos una gasolinera muy cerca para compras de última hora[cite: 39].</p>
+        <h3 class="section-title" id="ubicacion">Ubicación</h3> [cite: 58]
+        <p class="text-block">Camí Mas del Colomí, 9E, Reus. [cite: 139, 143] Hay una gasolinera muy cerca para compras de última hora. [cite: 39, 154]</p>
         <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <iframe src="http://googleusercontent.com/maps.google.com/7" 
+            <iframe src="http://googleusercontent.com/maps.google.com/8" 
             width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
     <nav class="nav-bar">
-        <a href="#" class="nav-item"><i class="fas fa-home" style="font-size:1.5rem;"></i><br>Inicio</a>
-        <a href="https://wa.me/34617635544" class="nav-item"><i class="fab fa-whatsapp" style="font-size:1.5rem;"></i><br>WhatsApp</a>
-        <a href="tel:+34617635544" class="nav-item"><i class="fas fa-phone" style="font-size:1.5rem;"></i><br>Llamar</a>
+        <a href="#" class="nav-item"><i class="fas fa-home"></i>Inicio</a>
+        <a href="#ubicacion" class="nav-item"><i class="fas fa-map-marked-alt"></i>Mapa</a>
+        <a href="https://wa.me/34617635544" class="nav-item"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+        <a href="tel:+34617635544" class="nav-item"><i class="fas fa-phone"></i>Llamar</a>
     </nav>
 
 </body>
 </html>
-
